@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+
+    <title>User Details Form</title>
+    
+    <style>
+
+    body {
+        background-image: url('static/kk.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    /* Center align content */
+    .container {
+        text-align: center;
+        padding: 100px;
+        background-color: aliceblue;
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url('static/kk.jpg');
+    }
+
+    /* Style buttons */
+    button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+</style>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (password.match(passwordRegex)) {
+                return true;
+            } else {
+                alert("Password must contain at least 8 characters, including one alphabet letter, one number, and one special character.");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+   
+        <h1 style="text-align: center; color: rgb(245, 248, 246); ">Login</h1>
+    
+    <div class="container">
+        
+        <form id="userDetailsForm" action="/login" method="POST">
+            <label for="name">Name :</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email  :</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <from onsubmit="return validatePassword()">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" onclick="submit">login</button>
+            </from>    
+            
+        </form>
+        <form action="/admin_login" method="GET">
+            <button type="submit">Admin Login</button>
+        </form>
+        <form action="/new" method="GET">
+            <button type="submit">New User</button>
+        </form>
+    </div>
+
+   
+
+    <script>
+        const users = [];
+
+        function addUser() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const user = {
+                name: name,
+                email: email,
+                password: password
+            };
+
+            users.push(user);
+            displayUserList();
+            clearForm();
+        }
+
+        function displayUserList() {
+            const userList = document.getElementById("userList");
+            userList.innerHTML = "";
+
+            users.forEach((user, index) => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `User ${index + 1}:<br>Name: ${user.name}<br>Email: ${user.email}<br>Password: ${user.password}<br>`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        function clearForm() {
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+        }
+    </script>
+</body>
+</html>

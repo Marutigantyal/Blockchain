@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View or Upload Images</title>
+</head>
+<body>
+    <h1>View or Upload Images</h1>
+    <form action="/view_upload_image" method="POST" enctype="multipart/form-data">
+        <label>Table Name:</label>
+        <input type="text" name="table_name" required>
+        <br>
+        <label>Action:</label>
+        <select name="action" required>
+            <option value="view">View</option>
+            <option value="upload">Upload</option>
+        </select>
+        <br>
+        <input type="file" name="image">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

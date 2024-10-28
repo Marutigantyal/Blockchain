@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Explorer</title>
+    <style>
+        /* Add background image */
+        body {
+            background-image: url('static/kk.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Center align content */
+        .container {
+            text-align: center;
+            padding: 100px;
+        }
+
+        /* Style buttons */
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blockchain Explorer</h1>
+
+       
+        
+
+        <h2>Blockchain Actions</h2>
+        <form action="/get_chain" method="GET">
+            <button type="submit">Get Blockchain</button>
+        </form>
+
+        <form action="/mine_block" method="POST">
+            <button type="submit">Mine New Block</button>
+        </form>
+
+        <form action="/search_block" method="POST">
+            <button type="submit">Search Block</button>
+        </form>
+
+        <form action="/valid" method="POST">
+            <button type="submit">Check Validity</button>
+        </form>
+
+        <h2>Custom Action</h2>
+        <form action="/jls_extract_def" method="POST">
+            <button type="submit">Custom Action</button>
+        </form>
+    </div>
+</body>
+</html>

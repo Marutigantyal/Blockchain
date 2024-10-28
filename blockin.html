@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS for centering content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+            background-size: cover;
+        }
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        /* CSS for content */
+        h1, p {
+            font-size: 24px;
+            text-align: center;
+            color: rgb(247, 16, 16); /* Text color on top of video */
+        }
+
+        form {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="/static/yourkey.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>YOUR BLOCK ID:</h1>
+    <p>{{ result }}</p>
+    <form action="/create" method="POST">
+        <!-- Your form elements here -->
+        <button type="submit">Create User Space</button>
+    </form>
+</body>
+</html>

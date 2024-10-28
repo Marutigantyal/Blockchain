@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        /* Center everything vertically and horizontally */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('static/newuser.jpg'); /* Replace with your background image path */
+            background-size: cover;
+        }
+
+        /* Style the registration form */
+        .registration-form {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .registration-form h1 {
+            margin-bottom: 20px;
+        }
+
+        .registration-form label,
+        .registration-form input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .registration-form input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Password validation message */
+        .password-validation {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h1>Create a New Account</h1>
+        <form action="/newuser" method="post"> 
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="name">Name:</label>
+            <input type="text" id="username" name="username" required>                        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+           
+            <!-- Password validation message -->
+            <div class="password-validation" id="passwordValidation"></div>
+                <input type="submit" value="Create Account">
+
+            
+            
+        </form>
+    </div>
+
+    <script>
+        // Password validation function
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            var validationMessage = document.getElementById("passwordValidation");
+            
+            if (password.match(passwordRegex)) {
+                validationMessage.textContent = ""; // Clear any previous validation message
+                return true;
+            } 
+            else {
+                validationMessage.textContent = "Password must contain at least 8 characters, including one alphabet letter, one number, and one special character.";
+                return false;
+            }
+        }
+
+        // Add password validation on form submission
+        document.querySelector("form").addEventListener("submit", function (event) {
+            if (!validatePassword()) {
+                event.preventDefault(); // Prevent form submission if password is not valid
+            }
+        });
+    </script>
+</body>
+</html>

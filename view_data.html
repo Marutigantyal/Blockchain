@@ -1,0 +1,7 @@
+{% for entry in data %}
+    {% if entry[1] == 'image' %}
+        <img src="{{ url_for('get_image', id=entry[0]) }}" alt="Image">
+    {% else %}
+        <p>{{ entry[2] }}</p>
+    {% endif %}
+{% endfor %}
