@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.env
+app.py
+final1.py
+
+new/
+myenv/
+flask_session/
