@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image or Text Selection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* CSS for centering content */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+        }
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px; /* Add margin to separate from content below */
+        }
+
+        .content {
+            width: 200px; /* Adjust the width as needed */
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        /* CSS for the form and other elements */
+        form {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+    <script>
+        // Store the value of hh in a JavaScript variable
+        var hhValue = "{{ hh }}";
+
+        // Function to update the form action URLs with hhValue
+        function updateFormActions() {
+            document.getElementById('viewDataForm').action = "/view_data";
+            document.getElementById('uploadImageForm').action = "/upload_image";
+        }
+    </script>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="/static/id.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <div class="content">
+            <!-- Your content goes here -->
+            <h1>Welcome to your page {{ hh }}</h1>
+        </div>
+    </div>
+
+    <div>
+        <h1>Select Image or Text</h1>
+        
+        <form id="viewDataForm" method="POST">
+            <label>
+                <input type="radio" name="data_type" value="image"> Image
+            </label>
+            <label>
+                <input type="radio" name="data_type" value="text"> Text
+            </label>
+            <br>
+            <input type="submit" value="View Data" onclick="updateFormActions()">
+        </form>
+        <h2>Upload Image:</h2>
+        <form id="uploadImageForm" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <input type="submit" value="Upload" onclick="updateFormActions()">
+        </form>
+        <form action="/hel" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    
+</body>
+</html>

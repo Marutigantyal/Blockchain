@@ -1,0 +1,11 @@
+/* styles.css */
+body {
+    /* Use the URL of your background image */
+    background-image: url('kk.jpg');
+    /* Set background properties as needed */
+    background-repeat: no-repeat;
+    background-size: cover; /* or contain, depending on your preference */
+    background-attachment: fixed; /* Fixed background */
+    /* You can also set a background color as a fallback */
+    background-color:rgb(63, 167, 53);
+}
